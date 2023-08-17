@@ -27,7 +27,7 @@ module "autoscaling" {
   max_size = 2
 
   vpc_zone_identifier = data.aws_vpc.default.id
-  target_group_arns  = module.blog_lb.target_groups_arns
+  target_group_arns  = module.blog_lb.target_group_arns
   security_groups = [module.blog_sg.security_group_id]
 
   image_id               = data.aws_ami.app_ami.id
