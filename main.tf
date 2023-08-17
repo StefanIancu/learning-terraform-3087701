@@ -38,7 +38,7 @@ module "alb" {
 
   vpc_id             = data.aws_vpc.default.id
   subnets            = ["subnet-abcde012", "subnet-bcde012a"]
-  security_groups    = module.blog_sg.security_group_id
+  security_groups    = [module.blog_sg.security_group_id]
 
 
   target_groups = [
