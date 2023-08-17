@@ -14,7 +14,7 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "vpc" {
+module "custom_vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "dev"
@@ -45,7 +45,7 @@ resource "aws_security_group" "blog" {
   tags = {
     Terraform = "true"
   }
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = module.custom_vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "blog_http_in" {
